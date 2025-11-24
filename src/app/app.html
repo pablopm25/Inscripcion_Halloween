@@ -1,43 +1,54 @@
-<div class="form-container">
-  <h1>🎃 Registro Fiesta del Castillo</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" placeholder="Tu nombre">
-      <span class="error">{{ getError('nombre') }}</span>
-    </mat-form-field>
+<div [ngClass]="themeService.isDarkMode() ? 'dark-theme' : 'light-theme'" class="app-wrapper">
+  
+  <app-navbar></app-navbar>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="correo@ejemplo.com">
-      <span class="error">{{ getError('email') }}</span>
-    </mat-form-field>
+  <div class="content-container">
+    <mat-card class="form-card">
+      <h1>🎃 Registro Fiesta del Castillo</h1>
+      
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Tu nombre">
+          <mat-error>{{ getError('nombre') }}</mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Tipo de invitado</mat-label>
-      <mat-select formControlName="tipoInvitado">
-        <mat-option *ngFor="let tipo of tiposInvitado" [value]="tipo">{{ tipo }}</mat-option>
-      </mat-select>
-      <span class="error">{{ getError('tipoInvitado') }}</span>
-    </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="correo@ejemplo.com">
+          <mat-error>{{ getError('email') }}</mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Disfraz</mat-label>
-      <input matInput formControlName="disfraz" placeholder="Describe tu disfraz">
-      <span class="error">{{ getError('disfraz') }}</span>
-    </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tipo de invitado</mat-label>
+          <mat-select formControlName="tipoInvitado">
+            <mat-option *ngFor="let tipo of tiposInvitado" [value]="tipo">{{ tipo }}</mat-option>
+          </mat-select>
+          <mat-error>{{ getError('tipoInvitado') }}</mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha de llegada</mat-label>
-      <input matInput type="date" formControlName="fechaLlegada">
-      <span class="error">{{ getError('fechaLlegada') }}</span>
-    </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Disfraz</mat-label>
+          <input matInput formControlName="disfraz" placeholder="Describe tu disfraz">
+          <mat-error>{{ getError('disfraz') }}</mat-error>
+        </mat-form-field>
 
-    <mat-checkbox formControlName="aceptaReglas">
-      Prometo no morder a los demás invitados
-    </mat-checkbox>
-    <span class="error">{{ getError('aceptaReglas') }}</span>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fecha de llegada</mat-label>
+          <input matInput type="date" formControlName="fechaLlegada">
+          <mat-error>{{ getError('fechaLlegada') }}</mat-error>
+        </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">🎉 Registrar</button>
-  </form>
+        <div class="checkbox-container">
+          <mat-checkbox formControlName="aceptaReglas">
+            Prometo no morder a los demás invitados
+          </mat-checkbox>
+          <div class="error-msg">{{ getError('aceptaReglas') }}</div>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width">🎉 Registrar</button>
+      </form>
+    </mat-card>
+  </div>
 </div>

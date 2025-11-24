@@ -5,6 +5,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card'; 
+import { NavbarComponent } from './navbar/navbar';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,9 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    NavbarComponent 
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
@@ -32,9 +37,11 @@ export class App {
     aceptaReglas: new FormControl(false, Validators.requiredTrue)
   });
 
+  constructor(public themeService: ThemeService) {}
+
   onSubmit() {
     if (this.form.valid) {
-      alert(`🎃 ¡Bienvenido/a, ${this.form.value.nombre}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.`);
+      alert(`🎃 ¡Bienvenido/a, ${this.form.value.nombre}! Tu entrada ha sido registrada.`);
       this.form.reset();
     } else {
       this.form.markAllAsTouched();
@@ -45,10 +52,10 @@ export class App {
     const control = this.form.get(controlName);
     if (!control || !control.touched || control.valid) return '';
     
-    if (control.errors?.['required']) return '👻 Este campo da más miedo vacío, ¡rellénalo!';
-    if (control.errors?.['minlength']) return `👻 Mínimo ${control.errors['minlength'].requiredLength} caracteres, ¡no te asustes!`;
-    if (control.errors?.['email']) return '🩸 Ese correo parece maldito… revisa el formato.';
-    if (control.errors?.['requiredTrue']) return '☠️ Debes aceptar las reglas para entrar.';
+    if (control.errors?.['required']) return '👻 Este campo es obligatorio';
+    if (control.errors?.['minlength']) return `👻 Mínimo ${control.errors['minlength'].requiredLength} caracteres`;
+    if (control.errors?.['email']) return '🩸 Email incorrecto';
+    if (control.errors?.['requiredTrue']) return '☠️ Acepta las reglas';
     
     return '';
   }

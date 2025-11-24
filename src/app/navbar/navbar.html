@@ -1,0 +1,14 @@
+<mat-toolbar [color]="themeService.isDarkMode() ? 'warn' : 'primary'">
+  <span>Fiesta Halloween</span>
+
+  
+  <span class="espaciador"></span>
+
+  <mat-slide-toggle 
+      [checked]="themeService.isDarkMode()" 
+      (change)="themeService.toggleTheme()">
+      
+      {{ themeService.isDarkMode() ? 'Modo oscuro 🌙' : 'Modo claro ☀️' }}
+      
+  </mat-slide-toggle>
+</mat-toolbar>

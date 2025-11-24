@@ -1,38 +1,48 @@
-.form-container {
+.app-wrapper {
+  min-height: 100vh; 
+  transition: background-color 0.5s ease;
+}
+
+.content-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-card {
+  padding: 20px;
+  width: 100%;
   max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  color: #fff;
-  font-family: 'Creepster', cursive;
 }
 
-h1 {
-  text-align: center;
-  color: #ff7518;
-}
-
-mat-form-field {
+.full-width {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
-.error {
-  color: #b30000; /* rojo sangriento */
-  font-size: 0.85rem;
-  display: block;
-  margin-top: 0.2rem;
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
-mat-checkbox {
-  display: block;
-  margin: 1rem 0;
+.light-theme {
+  background-color: #fff7ed; 
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #121212; 
+  color: #e0e0e0;
+}
+
+.dark-theme mat-card {
+  background-color: #1e1e1e;
   color: #fff;
+  border: 1px solid #7c4dff; 
 }
 
-button {
-  display: block;
-  width: 100%;
-  font-size: 1rem;
+.dark-theme h1 {
+  color: #ff9800; 
 }
